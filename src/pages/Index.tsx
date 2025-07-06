@@ -8,6 +8,7 @@ import TypewriterText from '@/components/TypewriterText';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { getAssetPath } from '@/lib/assets';
 
 const Index = () => {
   return (
@@ -51,7 +52,7 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/3 flex-shrink-0">
               <img 
-                src="/lovable-uploads/59cd95c2-401b-45a6-8d41-25e51f4db0e3.png"
+                src={getAssetPath("/lovable-uploads/59cd95c2-401b-45a6-8d41-25e51f4db0e3.png")}
                 alt="Daksh Bhatt"
                 className="w-full max-w-sm mx-auto rounded-lg shadow-2xl cosmic-glow"
               />

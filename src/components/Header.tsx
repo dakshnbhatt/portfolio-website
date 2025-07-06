@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
+import { getAssetPath } from '@/lib/assets';
 
 const Header = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const Header = () => {
         {/* Left side - Profile and Name */}
         <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
           <img 
-            src="/lovable-uploads/59cd95c2-401b-45a6-8d41-25e51f4db0e3.png" 
+            src={getAssetPath("/lovable-uploads/59cd95c2-401b-45a6-8d41-25e51f4db0e3.png")} 
             alt="Daksh Bhatt" 
             className="w-10 h-10 rounded-full object-cover border-2 border-cosmic-accent"
           />
