@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Portfolio website - GitHub Pages deployment
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
