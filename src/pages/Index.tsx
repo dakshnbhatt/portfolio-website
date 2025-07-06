@@ -39,6 +39,46 @@ const Index = () => {
               </Button>
             </Link>
           </div>
+
+          {/* Social Media Icons */}
+          <div className="flex justify-center gap-6 mt-8">
+            <a
+              href="https://www.linkedin.com/in/daksh-bhatt-388478369/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-cosmic-purple/20 border border-cosmic-purple hover:border-cosmic-accent hover:bg-cosmic-accent/20 transition-colors group"
+            >
+              <img
+                src={getAssetPath("/social-icons/linkedin-svgrepo-com.svg")}
+                alt="LinkedIn"
+                className="w-6 h-6 group-hover:scale-110 transition-transform"
+              />
+            </a>
+            <a
+              href="https://github.com/dakshnbhatt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-cosmic-purple/20 border border-cosmic-purple hover:border-cosmic-accent hover:bg-cosmic-accent/20 transition-colors group"
+            >
+              <img
+                src={getAssetPath("/social-icons/github-142-svgrepo-com.svg")}
+                alt="GitHub"
+                className="w-6 h-6 group-hover:scale-110 transition-transform"
+              />
+            </a>
+            <a
+              href="https://orcid.org/0009-0009-2783-1131"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-cosmic-purple/20 border border-cosmic-purple hover:border-cosmic-accent hover:bg-cosmic-accent/20 transition-colors group"
+            >
+              <img
+                src={getAssetPath("/social-icons/orcid-svgrepo-com.svg")}
+                alt="ORCID"
+                className="w-6 h-6 group-hover:scale-110 transition-transform"
+              />
+            </a>
+          </div>
         </div>
       </section>
 
