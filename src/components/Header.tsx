@@ -52,7 +52,7 @@ const Header = () => {
           className="bg-purple-gradient hover:bg-cosmic-light text-white font-semibold px-6 py-2 cosmic-glow"
           onClick={() => {
             // Open CV in new tab for viewing/downloading
-            const cvPath = getAssetPath('/Daksh_Bhatt_CV.pdf');
+            const cvPath = getAssetPath('/files/Daksh_Bhatt_CV.pdf');
             window.open(cvPath, '_blank');
           }}
         >

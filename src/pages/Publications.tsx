@@ -30,7 +30,7 @@ const Publications = () => {
       year: '2024',
       type: 'Technical Report',
       abstract: 'Investigated the impact of surface tessellation resolution and CAD geometry variations on optical simulations using Chroma, a GPU-based ray-tracing framework in Python. Results informed simulation practices within the PocarGroup at UMass and the nEXO collaboration.',
-      pdfUrl: getAssetPath('/lovable-uploads/ff1ee686-9388-4a2e-aefa-9aa01f4e4ef5.png'), // This would be the actual PDF link
+      pdfUrl: getAssetPath('/files/Pocar_Lab___Chroma___SolidWorks_Vs_Fusion_Comparison_Test.pdf'),
       externalUrl: undefined
     }
     // Add more publications here following the same structure:
