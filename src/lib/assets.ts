@@ -1,8 +1,5 @@
-// Utility function to handle asset paths for GitHub Pages deployment
+// Utility function to handle asset paths for custom domain deployment
 export const getAssetPath = (path: string): string => {
-  // Remove leading slash if present
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  
-  // Always use the base path for production builds
-  return `/portfolio-website/${cleanPath}`;
+  // For custom domain, we use the root path
+  return path.startsWith('/') ? path : `/${path}`;
 };
