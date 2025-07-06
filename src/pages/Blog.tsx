@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { getAssetPath } from '@/lib/assets';
 
 interface BlogPost {
   id: string;
@@ -39,7 +40,7 @@ const Blog = () => {
 
       Thanks for joining me on this cosmic adventure!`,
       date: '2024-12-01',
-      imageUrl: '/lovable-uploads/59cd95c2-401b-45a6-8d41-25e51f4db0e3.png',
+      imageUrl: getAssetPath('/lovable-uploads/APS-DNP-presenter-image.png'),
       tags: ['personal', 'journey', 'astrophysics']
     }
     // Add more blog posts here following the same structure:
