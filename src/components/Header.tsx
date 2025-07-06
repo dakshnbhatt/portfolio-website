@@ -51,8 +51,9 @@ const Header = () => {
         <Button 
           className="bg-purple-gradient hover:bg-cosmic-light text-white font-semibold px-6 py-2 cosmic-glow"
           onClick={() => {
-            // CV download logic - placeholder for now
-            console.log('Download CV');
+            // Open CV in new tab for viewing/downloading
+            const cvPath = getAssetPath('/Daksh_Bhatt_CV.pdf');
+            window.open(cvPath, '_blank');
           }}
         >
           <Download className="w-4 h-4 mr-2" />
