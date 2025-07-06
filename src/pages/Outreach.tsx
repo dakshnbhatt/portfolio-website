@@ -4,7 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp, Download } from 'lucide-react';
+import { getAssetPath } from '@/lib/assets';
 
 interface OutreachItem {
   id: string;
@@ -17,6 +18,8 @@ interface OutreachItem {
   fullContent: string;
   videoUrl?: string;
   thumbnailUrl?: string;
+  abstractUrl?: string;
+  posterUrl?: string;
 }
 
 const Outreach = () => {
@@ -50,7 +53,9 @@ const Outreach = () => {
 
       The work directly contributes to improving the sensitivity of future neutrino physics experiments by optimizing detector geometry and simulation accuracy. This research helps ensure that theoretical predictions match experimental reality, crucial for detecting rare nuclear processes.
 
-      The presentation was well-received by the nuclear physics community and has informed ongoing detector development efforts within the nEXO collaboration.`
+      The presentation was well-received by the nuclear physics community and has informed ongoing detector development efforts within the nEXO collaboration.`,
+      abstractUrl: getAssetPath('/files/2024 APS-DNP CEU Abstract.pdf'),
+      posterUrl: getAssetPath('/files/Daksh Bhatt APS-DNP CEU Poster Final Draft.pdf')
     },
     {
       id: 'phys131-ta',
@@ -207,6 +212,31 @@ const Outreach = () => {
                         <div className="whitespace-pre-line leading-relaxed">
                           {item.fullContent}
                         </div>
+                        
+                        {/* Download buttons for APS DNP entry */}
+                        {(item.abstractUrl || item.posterUrl) && (
+                          <div className="flex flex-wrap gap-3 mt-6 pt-4 border-t border-cosmic-purple/30">
+                            {item.abstractUrl && (
+                              <Button
+                                className="bg-purple-gradient hover:bg-cosmic-light text-white"
+                                onClick={() => window.open(item.abstractUrl, '_blank')}
+                              >
+                                <Download className="w-4 h-4 mr-2" />
+                                Download Abstract
+                              </Button>
+                            )}
+                            
+                            {item.posterUrl && (
+                              <Button
+                                className="bg-purple-gradient hover:bg-cosmic-light text-white"
+                                onClick={() => window.open(item.posterUrl, '_blank')}
+                              >
+                                <Download className="w-4 h-4 mr-2" />
+                                Download Poster
+                              </Button>
+                            )}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
