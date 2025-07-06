@@ -14,8 +14,6 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-console.log('App component loading - HashRouter version...');
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>

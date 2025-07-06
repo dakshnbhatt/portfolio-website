@@ -10,8 +10,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 const Index = () => {
-  console.log('Index component rendering...');
-  
   return (
     <div className="min-h-screen bg-cosmic-dark text-foreground">
       <GalaxySimulation />
