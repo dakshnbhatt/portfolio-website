@@ -20,7 +20,7 @@ const Index = () => {
       <section className="relative z-10 min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-4xl mx-auto">
           <div className="mb-8">
-            <TypewriterText text="Welcome to the Cosmic Journey" />
+            <TypewriterText text="Welcome to My Cosmic Journey" />
           </div>
           
           <p className="text-cosmic-star text-lg md:text-xl mb-8 max-w-2xl mx-auto">

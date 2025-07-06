@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { getAssetPath } from '@/lib/assets';
 
 interface ResearchItem {
   id: string;
@@ -64,7 +65,7 @@ const Research = () => {
 
       This work directly contributes to optimizing the detector design for maximum sensitivity to this rare nuclear process, which could provide insights into why the universe contains more matter than antimatter.`,
       links: [
-        { label: 'APS DNP 2024 Conference Presentation', url: '#' }
+        { label: 'APS DNP 2024 Conference Presentation', url: getAssetPath('/files/Daksh Bhatt APS-DNP CEU Poster Final Draft.pdf') }
       ]
     },
     {
