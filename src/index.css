@@ -1,0 +1,89 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 10 100% 5%;
+    --foreground: 255 100% 95%;
+
+    --card: 260 30% 8%;
+    --card-foreground: 255 100% 95%;
+
+    --popover: 260 30% 8%;
+    --popover-foreground: 255 100% 95%;
+
+    --primary: 262 52% 47%;
+    --primary-foreground: 255 100% 95%;
+
+    --secondary: 260 30% 15%;
+    --secondary-foreground: 255 100% 95%;
+
+    --muted: 260 30% 15%;
+    --muted-foreground: 255 20% 65%;
+
+    --accent: 270 95% 75%;
+    --accent-foreground: 260 30% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 260 30% 20%;
+    --input: 260 30% 15%;
+    --ring: 262 52% 47%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 260 30% 8%;
+    --sidebar-foreground: 255 100% 95%;
+    --sidebar-primary: 262 52% 47%;
+    --sidebar-primary-foreground: 255 100% 95%;
+    --sidebar-accent: 260 30% 15%;
+    --sidebar-accent-foreground: 255 100% 95%;
+    --sidebar-border: 260 30% 20%;
+    --sidebar-ring: 262 52% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cosmic-dark text-foreground overflow-x-hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .cosmic-glow {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  
+  .star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+    animation: typewriter 3s steps(40) 1s forwards, blink 1s infinite;
+  }
+}
