@@ -297,19 +297,24 @@ const GalaxySimulation = () => {
           star.vy = -Math.abs(star.vy) * 0.8;
         }
         
-        // Beautiful light purple color palette
+        // Beautiful diverse purple color palette
         const colors = [
-          '#e6ccff', // Very light purple
-          '#d9b3ff', // Light lavender
-          '#cc99ff', // Soft purple
-          '#bf80ff', // Medium purple
-          '#b366ff', // Rich purple
-          '#a64dff', // Deep purple
-          '#9933ff'  // Vibrant purple
+          '#f3e8ff', // Very light purple
+          '#e9d5ff', // Light lavender  
+          '#d8b4fe', // Soft purple
+          '#c084fc', // Medium light purple
+          '#a855f7', // Standard purple
+          '#9333ea', // Rich purple
+          '#7c3aed', // Deep purple
+          '#6d28d9', // Darker purple
+          '#5b21b6', // Very deep purple
+          '#4c1d95'  // Darkest purple
         ];
         
-        const colorIndex = Math.floor(star.brightness * (colors.length - 1));
-        const color = colors[colorIndex];
+        // Use a combination of brightness and galaxy position for more color variety
+        const colorSeed = (star.brightness * 0.6) + (star.galaxy * 0.2) + (star.armIndex * 0.2);
+        const colorIndex = Math.floor(colorSeed * (colors.length - 1));
+        const color = colors[Math.min(colorIndex, colors.length - 1)];
         
         // Draw small tapered trails
         if (star.trail.length > 1) {
