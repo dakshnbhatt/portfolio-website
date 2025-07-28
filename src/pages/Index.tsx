@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
@@ -157,7 +156,7 @@ const Index = () => {
 
       {/* Latest News and Updates Section */}
       <section className="relative z-10 py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-bold text-cosmic-bright text-center mb-8">
             Latest News and Updates
           </h2>
@@ -167,21 +166,21 @@ const Index = () => {
               <Table>
                 <TableHeader>
                   <TableRow className="border-cosmic-purple">
-                    <TableHead className="text-cosmic-accent font-semibold">Date</TableHead>
+                    <TableHead className="text-cosmic-accent font-semibold w-32 whitespace-nowrap">Date</TableHead>
                     <TableHead className="text-cosmic-accent font-semibold">Update</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   <TableRow className="border-cosmic-purple hover:bg-cosmic-purple/20">
-                    <TableCell className="text-cosmic-star font-medium">Jul 2025</TableCell>
-                    <TableCell className="text-cosmic-star">Started research collaboration with The Great Basin Observatory on binary star detection</TableCell>
+                    <TableCell className="text-cosmic-star font-medium w-32 whitespace-nowrap">Jul 2025</TableCell>
+                    <TableCell className="text-cosmic-star">Started research with The Great Basin Observatory on binary star detection (Paper Soon)</TableCell>
                   </TableRow>
                   <TableRow className="border-cosmic-purple hover:bg-cosmic-purple/20">
-                    <TableCell className="text-cosmic-star font-medium">Dec 2024</TableCell>
-                    <TableCell className="text-cosmic-star">Started research collaboration with Prof. Daniella Calzetti on stellar photometry and dust attenuation studies</TableCell>
+                    <TableCell className="text-cosmic-star font-medium w-32 whitespace-nowrap">Dec 2024</TableCell>
+                    <TableCell className="text-cosmic-star">Started research collaboration with Prof. Daniella Calzetti on stellar photometry and dust attenuation studies (Paper Soon)</TableCell>
                   </TableRow>
                   <TableRow className="border-cosmic-purple hover:bg-cosmic-purple/20">
-                    <TableCell className="text-cosmic-star font-medium">Oct 2024</TableCell>
+                    <TableCell className="text-cosmic-star font-medium w-32 whitespace-nowrap">Oct 2024</TableCell>
                     <TableCell className="text-cosmic-star">Presented poster at American Physical Society Division of Nuclear Physics Meeting</TableCell>
                   </TableRow>
                 </TableBody>

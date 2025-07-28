@@ -9,17 +9,32 @@ interface Star {
   opacity: number;
   galaxy: 1 | 2;
   trail: { x: number; y: number }[];
-  // Store relative position from galaxy center for proper scaling
-  relativeX: number;
-  relativeY: number;
-  angle: number;
-  radius: number;
+  // Spiral properties
+  armIndex: number;
+  distanceFromCenter: number;
+  angleInArm: number;
+  brightness: number;
+  originalX: number;
+  originalY: number;
+}
+
+interface Galaxy {
+  centerX: number;
+  centerY: number;
+  vx: number;
+  vy: number;
+  rotation: number;
+  size: number;
+  originalCenterX: number;
+  originalCenterY: number;
 }
 
 const GalaxySimulation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const starsRef = useRef<Star[]>([]);
+  const galaxiesRef = useRef<Galaxy[]>([]);
+  const timeRef = useRef(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -34,148 +49,282 @@ const GalaxySimulation = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       
-      // Update star positions when canvas is resized
-      updateStarPositions();
+      if (galaxiesRef.current.length === 0) {
+        initializeGalaxies();
+      } else {
+        // Update galaxy positions proportionally
+        const oldCenterX1 = galaxiesRef.current[0].originalCenterX;
+        const oldCenterX2 = galaxiesRef.current[1].originalCenterX;
+        
+        galaxiesRef.current[0].originalCenterX = canvas.width * 0.28;
+        galaxiesRef.current[0].originalCenterY = canvas.height * 0.5;
+        galaxiesRef.current[1].originalCenterX = canvas.width * 0.72;
+        galaxiesRef.current[1].originalCenterY = canvas.height * 0.5;
+        
+        // Reset galaxies if canvas resized significantly
+        if (Math.abs(oldCenterX1 - galaxiesRef.current[0].originalCenterX) > 50) {
+          initializeGalaxies();
+          initStars();
+        }
+      }
     };
     
-    const updateStarPositions = () => {
-      starsRef.current.forEach((star) => {
-        // Calculate new galaxy centers based on current canvas size
-        const centerX = star.galaxy === 1 ? canvas.width * 0.3 : canvas.width * 0.7;
-        const centerY = canvas.height * 0.5;
-        
-        // Update star position based on its stored relative position
-        star.x = centerX + Math.cos(star.angle) * star.radius + star.relativeX;
-        star.y = centerY + Math.sin(star.angle) * star.radius * 0.3 + star.relativeY;
-      });
+    const initializeGalaxies = () => {
+      galaxiesRef.current = [
+        {
+          centerX: canvas.width * 0.28,
+          centerY: canvas.height * 0.5,
+          vx: 0.3,
+          vy: 0,
+          rotation: 0,
+          size: 100,
+          originalCenterX: canvas.width * 0.28,
+          originalCenterY: canvas.height * 0.5
+        },
+        {
+          centerX: canvas.width * 0.72,
+          centerY: canvas.height * 0.5,
+          vx: -0.3,
+          vy: 0,
+          rotation: 0,
+          size: 100,
+          originalCenterX: canvas.width * 0.72,
+          originalCenterY: canvas.height * 0.5
+        }
+      ];
     };
     
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize stars only once
+    // Create beautiful spiral galaxies with 500 total stars
     if (starsRef.current.length === 0) {
       const initStars = () => {
         starsRef.current = [];
-        const numStars = 150;
-
-        // Galaxy 1 (left side)
-        for (let i = 0; i < numStars; i++) {
-          const angle = (i / numStars) * Math.PI * 4;
-          const radius = 50 + (i / numStars) * 200;
-          const centerX = canvas.width * 0.3;
-          const centerY = canvas.height * 0.5;
-          const relativeX = (Math.random() - 0.5) * 50;
-          const relativeY = (Math.random() - 0.5) * 50;
-
-          starsRef.current.push({
-            x: centerX + Math.cos(angle) * radius + relativeX,
-            y: centerY + Math.sin(angle) * radius * 0.3 + relativeY,
-            vx: Math.sin(-angle - Math.PI/2) * 0.5 + (Math.random() - 0.5) * 0.3,
-            vy: Math.cos(-angle - Math.PI/2) * 0.2 + (Math.random() - 0.5) * 0.3,
-            size: Math.random() * 3 + 1,
-            opacity: Math.random() * 0.8 + 0.2,
-            galaxy: 1,
-            trail: [],
-            relativeX,
-            relativeY,
-            angle,
-            radius
-          });
-        }
-
-        // Galaxy 2 (right side)
-        for (let i = 0; i < numStars; i++) {
-          const angle = (i / numStars) * Math.PI * 4;
-          const radius = 50 + (i / numStars) * 200;
-          const centerX = canvas.width * 0.7;
-          const centerY = canvas.height * 0.5;
-          const relativeX = (Math.random() - 0.5) * 50;
-          const relativeY = (Math.random() - 0.5) * 50;
-
-          starsRef.current.push({
-            x: centerX + Math.cos(angle) * radius + relativeX,
-            y: centerY + Math.sin(angle) * radius * 0.3 + relativeY,
-            vx: Math.sin(-angle - Math.PI/2) * 0.5 + (Math.random() - 0.5) * 0.3,
-            vy: Math.sin(-angle - Math.PI/2) * 0.2 + (Math.random() - 0.5) * 0.3,
-            size: Math.random() * 3 + 1,
-            opacity: Math.random() * 0.8 + 0.2,
-            galaxy: 2,
-            trail: [],
-            relativeX,
-            relativeY,
-            angle,
-            radius
-          });
+        
+        for (let galaxyId = 1; galaxyId <= 2; galaxyId++) {
+          const galaxy = galaxiesRef.current[galaxyId - 1];
+          
+          // Create 2 prominent spiral arms per galaxy
+          for (let arm = 0; arm < 2; arm++) {
+            const armStars = 100; // Increased from 50 to 100 per arm (200 per galaxy)
+            
+            for (let i = 0; i < armStars; i++) {
+              const t = i / (armStars - 1);
+              const radius = 10 + t * 80;
+              
+              // Perfect logarithmic spiral
+              const spiralTightness = 0.35;
+              const armOffset = arm * Math.PI; // 180° apart
+              const baseAngle = spiralTightness * t * 6 * Math.PI + armOffset;
+              
+              // Add some natural variation
+              const angleVariation = (Math.random() - 0.5) * 0.2;
+              const radiusVariation = (Math.random() - 0.5) * 6;
+              
+              const finalRadius = radius + radiusVariation;
+              const finalAngle = baseAngle + angleVariation;
+              
+              const x = galaxy.centerX + Math.cos(finalAngle) * finalRadius;
+              const y = galaxy.centerY + Math.sin(finalAngle) * finalRadius * 0.2;
+              
+              // Rotational velocity
+              const rotSpeed = 0.01 + (0.005 / Math.max(finalRadius * 0.01, 1));
+              const direction = galaxyId === 1 ? 1 : -1;
+              const vx = -Math.sin(finalAngle) * rotSpeed * direction;
+              const vy = Math.cos(finalAngle) * rotSpeed * 0.2 * direction;
+              
+              starsRef.current.push({
+                x, y, vx, vy,
+                size: (Math.random() * 1 + 0.8) * 1.2, // Increased by 20% (multiplied by 1.2)
+                opacity: Math.random() * 0.4 + 0.6,
+                galaxy: galaxyId as 1 | 2,
+                trail: [],
+                armIndex: arm,
+                distanceFromCenter: finalRadius,
+                angleInArm: finalAngle,
+                brightness: Math.random() * 0.5 + 0.5,
+                originalX: x,
+                originalY: y
+              });
+            }
+          }
+          
+          // Add central bulge stars
+          for (let i = 0; i < 50; i++) { // Increased from 20 to 50 per galaxy
+            const radius = Math.random() * 15 + 3;
+            const angle = Math.random() * 2 * Math.PI;
+            const x = galaxy.centerX + Math.cos(angle) * radius;
+            const y = galaxy.centerY + Math.sin(angle) * radius * 0.4;
+            
+            starsRef.current.push({
+              x, y,
+              vx: (Math.random() - 0.5) * 0.01,
+              vy: (Math.random() - 0.5) * 0.01,
+              size: (Math.random() * 1.2 + 1) * 1.2, // Increased by 20% (multiplied by 1.2)
+              opacity: Math.random() * 0.3 + 0.7,
+              galaxy: galaxyId as 1 | 2,
+              trail: [],
+              armIndex: -1,
+              distanceFromCenter: radius,
+              angleInArm: angle,
+              brightness: Math.random() * 0.3 + 0.7,
+              originalX: x,
+              originalY: y
+            });
+          }
         }
       };
 
+      initializeGalaxies();
       initStars();
     }
 
-    // Animation loop
+    // Animation loop with proper collision dynamics
     const animate = () => {
-      // Calculate speed and opacity based on scroll
-      const speedMultiplier = Math.max(0.2, 1 - scrollProgress * 0.8);
-      const opacityMultiplier = Math.max(0.3, 1 - scrollProgress * 0.7);
+      timeRef.current += 1;
+      
+      const speedMultiplier = Math.max(0.4, 1 - scrollProgress * 0.6);
+      const opacityMultiplier = Math.max(0.5, 1 - scrollProgress * 0.5);
 
-      // Clear canvas completely for crisp trails
-      ctx.fillStyle = 'rgba(10, 1, 24, 1)';
+      // Deep space background
+      ctx.fillStyle = 'rgba(3, 0, 12, 1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      starsRef.current.forEach((star) => {
-        // Apply gravitational effects between galaxies
-        const centerX = canvas.width * 0.5;
-        const centerY = canvas.height * 0.5;
+      const galaxy1 = galaxiesRef.current[0];
+      const galaxy2 = galaxiesRef.current[1];
+      
+      // Calculate distance between galaxies
+      const dx = galaxy2.centerX - galaxy1.centerX;
+      const dy = galaxy2.centerY - galaxy1.centerY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      // Strong gravitational attraction between galaxies
+      if (distance > 30) {
+        const force = 0.00008 * speedMultiplier;
+        const fx = (dx / distance) * force;
+        const fy = (dy / distance) * force;
         
-        const dx = centerX - star.x;
-        const dy = centerY - star.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance > 0) {
-          const force = 0.0001 * speedMultiplier;
-          star.vx += (dx / distance) * force;
-          star.vy += (dy / distance) * force;
-        }
+        galaxy1.vx += fx;
+        galaxy1.vy += fy;
+        galaxy2.vx -= fx;
+        galaxy2.vy -= fy;
+      } else {
+        // When galaxies are very close, slow them down for merger
+        galaxy1.vx *= 0.98;
+        galaxy1.vy *= 0.98;
+        galaxy2.vx *= 0.98;
+        galaxy2.vy *= 0.98;
+      }
+      
+      // Update galaxy positions
+      galaxy1.centerX += galaxy1.vx * speedMultiplier;
+      galaxy1.centerY += galaxy1.vy * speedMultiplier;
+      galaxy2.centerX += galaxy2.vx * speedMultiplier;
+      galaxy2.centerY += galaxy2.vy * speedMultiplier;
+      
+      // Keep galaxies roughly on screen
+      const centerBuffer = 100;
+      if (galaxy1.centerX < centerBuffer) galaxy1.vx = Math.abs(galaxy1.vx) * 0.5;
+      if (galaxy1.centerX > canvas.width - centerBuffer) galaxy1.vx = -Math.abs(galaxy1.vx) * 0.5;
+      if (galaxy1.centerY < centerBuffer) galaxy1.vy = Math.abs(galaxy1.vy) * 0.5;
+      if (galaxy1.centerY > canvas.height - centerBuffer) galaxy1.vy = -Math.abs(galaxy1.vy) * 0.5;
+      
+      if (galaxy2.centerX < centerBuffer) galaxy2.vx = Math.abs(galaxy2.vx) * 0.5;
+      if (galaxy2.centerX > canvas.width - centerBuffer) galaxy2.vx = -Math.abs(galaxy2.vx) * 0.5;
+      if (galaxy2.centerY < centerBuffer) galaxy2.vy = Math.abs(galaxy2.vy) * 0.5;
+      if (galaxy2.centerY > canvas.height - centerBuffer) galaxy2.vy = -Math.abs(galaxy2.vy) * 0.5;
+      
+      // Galaxy rotation
+      galaxy1.rotation += 0.006 * speedMultiplier;
+      galaxy2.rotation -= 0.006 * speedMultiplier;
 
-        // Add current position to trail (keep trail shorter - max 8 points)
+      // Update stars with proper collision dynamics
+      starsRef.current.forEach((star) => {
+        const ownGalaxy = star.galaxy === 1 ? galaxy1 : galaxy2;
+        const otherGalaxy = star.galaxy === 1 ? galaxy2 : galaxy1;
+        
+        // Force from own galaxy center (keeps galaxy structure)
+        const dx1 = ownGalaxy.centerX - star.x;
+        const dy1 = ownGalaxy.centerY - star.y;
+        const r1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+        
+        if (r1 > 1) {
+          const force1 = 0.015 * speedMultiplier / Math.max(r1 * 0.5, 1);
+          star.vx += (dx1 / r1) * force1;
+          star.vy += (dy1 / r1) * force1;
+        }
+        
+        // Tidal forces from other galaxy (creates collision effects)
+        const dx2 = otherGalaxy.centerX - star.x;
+        const dy2 = otherGalaxy.centerY - star.y;
+        const r2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+        
+        if (r2 > 1) {
+          // Stronger tidal force when galaxies are closer
+          const tidalStrength = distance < 100 ? 0.008 : 0.003;
+          const force2 = tidalStrength * speedMultiplier / Math.max(r2 * 0.8, 5);
+          star.vx += (dx2 / r2) * force2;
+          star.vy += (dy2 / r2) * force2;
+        }
+        
+        // Add stellar trails (small and tapered)
         star.trail.push({ x: star.x, y: star.y });
-        if (star.trail.length > 8) {
+        if (star.trail.length > 4) { // Short trails
           star.trail.shift();
         }
-
+        
         // Update position
         star.x += star.vx * speedMultiplier;
         star.y += star.vy * speedMultiplier;
-
-        // Wrap around edges
-        if (star.x < 0) star.x = canvas.width;
-        if (star.x > canvas.width) star.x = 0;
-        if (star.y < 0) star.y = canvas.height;
-        if (star.y > canvas.height) star.y = 0;
-
-        // Get colors for this galaxy
-        const colors = star.galaxy === 1 
-          ? ['#c084fc', '#a855f7', '#e0e7ff'] 
-          : ['#8b5cf6', '#7c3aed', '#ddd6fe'];
         
-        const color = colors[Math.floor(Math.random() * colors.length)];
-
-        // Draw comet-like trail (tapered and thin)
+        // Keep stars on screen with elastic boundaries
+        const buffer = 50;
+        if (star.x < buffer) {
+          star.x = buffer;
+          star.vx = Math.abs(star.vx) * 0.8;
+        }
+        if (star.x > canvas.width - buffer) {
+          star.x = canvas.width - buffer;
+          star.vx = -Math.abs(star.vx) * 0.8;
+        }
+        if (star.y < buffer) {
+          star.y = buffer;
+          star.vy = Math.abs(star.vy) * 0.8;
+        }
+        if (star.y > canvas.height - buffer) {
+          star.y = canvas.height - buffer;
+          star.vy = -Math.abs(star.vy) * 0.8;
+        }
+        
+        // Beautiful light purple color palette
+        const colors = [
+          '#e6ccff', // Very light purple
+          '#d9b3ff', // Light lavender
+          '#cc99ff', // Soft purple
+          '#bf80ff', // Medium purple
+          '#b366ff', // Rich purple
+          '#a64dff', // Deep purple
+          '#9933ff'  // Vibrant purple
+        ];
+        
+        const colorIndex = Math.floor(star.brightness * (colors.length - 1));
+        const color = colors[colorIndex];
+        
+        // Draw small tapered trails
         if (star.trail.length > 1) {
           for (let i = 0; i < star.trail.length - 1; i++) {
             const trailPoint = star.trail[i];
             const nextPoint = star.trail[i + 1];
             
-            // Calculate trail opacity (fades towards the back)
-            const trailOpacity = (i / star.trail.length) * star.opacity * opacityMultiplier * 0.3;
-            
-            // Calculate trail thickness (tapers towards the back)
-            const trailThickness = (i / star.trail.length) * star.size * 0.4;
+            // Tapered opacity and thickness
+            const trailProgress = (i + 1) / star.trail.length;
+            const trailOpacity = trailProgress * star.opacity * opacityMultiplier * 0.4;
+            const trailThickness = trailProgress * star.size * 0.6;
             
             ctx.globalAlpha = trailOpacity;
             ctx.strokeStyle = color;
-            ctx.lineWidth = Math.max(0.5, trailThickness);
+            ctx.lineWidth = Math.max(0.3, trailThickness);
             ctx.lineCap = 'round';
             
             ctx.beginPath();
@@ -184,13 +333,20 @@ const GalaxySimulation = () => {
             ctx.stroke();
           }
         }
-
-        // Draw main star (clean, no glow effect)
+        
+        // Draw distinct stars
         ctx.globalAlpha = star.opacity * opacityMultiplier;
         ctx.fillStyle = color;
+        
+        // Small subtle glow
+        ctx.shadowBlur = star.size * 0.5;
+        ctx.shadowColor = color;
+        
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
+        
+        ctx.shadowBlur = 0;
       });
 
       ctx.globalAlpha = 1;
@@ -199,7 +355,7 @@ const GalaxySimulation = () => {
 
     animate();
 
-    // Scroll listener for smooth speed control
+    // Scroll listener
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const maxScroll = window.innerHeight * 0.8;
@@ -222,7 +378,7 @@ const GalaxySimulation = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ background: 'linear-gradient(135deg, #0a0118 0%, #2d1b69 50%, #6b46c1 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #030009 0%, #180c2a 50%, #2a1b3d 100%)' }}
     />
   );
 };

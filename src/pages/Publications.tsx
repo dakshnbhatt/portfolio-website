@@ -57,7 +57,7 @@ const Publications = () => {
               Publications
             </h1>
             <p className="text-cosmic-star text-lg max-w-2xl mx-auto">
-              Research contributions to astrophysics and particle physics
+              Research contributions to astrophysics and physics
             </p>
           </div>
 
