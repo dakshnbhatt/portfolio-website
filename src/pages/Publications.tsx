@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -124,16 +123,25 @@ const Publications = () => {
                 </Card>
               ))}
               
-              {/* Instructions for future additions */}
-              <Card className="bg-card/50 border-cosmic-purple/50">
-                <CardContent className="p-6">
-                  <p className="text-cosmic-star/70 text-sm italic">
-                    To add new publications: Edit the publications array in src/pages/Publications.tsx 
-                    following the existing structure. Include title, authors, venue, year, type, and 
-                    optional abstract, pdfUrl, and externalUrl fields.
-                  </p>
-                </CardContent>
-              </Card>
+              {/* 
+              Instructions for adding new publications (for developer reference only):
+              
+              To add new publications: Edit the publications array above following the existing structure. 
+              Include title, authors, venue, year, type, and optional abstract, pdfUrl, and externalUrl fields.
+              
+              Example structure:
+              {
+                id: 'unique-publication-id',
+                title: 'Title of the Publication',
+                authors: 'Daksh Bhatt, Co-Author Name, et al.',
+                venue: 'Journal Name or Conference Proceedings',
+                year: '2025',
+                type: 'Journal Article' | 'Conference Paper' | 'Technical Report' | 'Preprint',
+                abstract: 'Brief description of the research and findings...', // optional
+                pdfUrl: getAssetPath('/files/paper.pdf'), // optional
+                externalUrl: 'https://journal-website.com/paper-link' // optional
+              }
+              */}
             </div>
           )}
         </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -42,18 +41,22 @@ const Outreach = () => {
       type: 'presentation',
       period: 'Oct 2024',
       venue: 'APS DNP Conference',
-      description: 'Presented research on optical simulation fidelity in LXe environments using Chroma. Demonstrated how surface tessellation in CAD-generated geometries affects photon transport efficiency predictions, with implications for detector modeling in the nEXO experiment.',
-      fullContent: `This presentation at the American Physical Society's Division of Nuclear Physics Conference showcased critical research on optimizing detector simulations for next-generation physics experiments.
+      description: 'At the 2024 APS Division of Nuclear Physics Conference, I presented my research on how CAD surface tessellation impacts photon transport simulations in liquid xenon detectors. This work, part of the nEXO collaboration, helps refine optical modeling and improve detector design for future neutrino experiments.',
+      fullContent: `In October 2024, I packed my poster tube and nerves and headed to my first-ever scientific conference: the APS Division of Nuclear Physics (DNP) meeting. It was the culmination of a summer spent immersed in the intricacies of detector simulation, and I was both thrilled and terrified to present my work to a room full of nuclear physicists.
 
-      Presentation Highlights:
-      • Demonstrated the impact of surface tessellation resolution on optical simulation accuracy in liquid xenon environments
-      • Presented quantitative analysis of how CAD geometry variations affect photon transport efficiency predictions
-      • Showed implications for detector design optimization in the nEXO experiment
-      • Discussed best practices for GPU-accelerated optical simulations using the Chroma framework
+My project, developed within the nEXO collaboration, focused on a subtle but critical issue in detector modeling: how surface tessellation in CAD-generated geometries can affect photon transport efficiency in liquid xenon (LXe) detectors. Using Chroma, a GPU-accelerated optical simulation framework, I had spent months running tests, debugging artifacts, and developing strategies to isolate simulation inaccuracies caused by low-resolution mesh geometry, particularly in curved reflectors.
 
-      The work directly contributes to improving the sensitivity of future neutrino physics experiments by optimizing detector geometry and simulation accuracy. This research helps ensure that theoretical predictions match experimental reality, crucial for detecting rare nuclear processes.
+In the poster, I demonstrated:
+• How tessellation resolution impacts optical simulation fidelity in LXe environments
+• Quantitative results showing efficiency differences between flat and curved surfaces under different mesh configurations
+• Best practices for simulation setup using Chroma
+• The implications of all of this for detector design and sensitivity in the nEXO experiment
 
-      The presentation was well-received by the nuclear physics community and has informed ongoing detector development efforts within the nEXO collaboration.`,
+This wasn't just a technical exercise; it was a contribution toward improving the tools we use to simulate and design some of the most sensitive particle detectors ever built.
+
+Presenting at APS DNP was more than just checking a box; it was the moment I first saw myself as part of the scientific community. I fielded questions, got suggestions from senior researchers, and had the incredible experience of explaining my work to people who genuinely cared. It was my first time in a new city solely for science, and I came back not only more confident in my research but more inspired than ever to keep asking questions and chasing answers.
+
+That poster now hangs above my desk: a reminder of how far I've come, and how much more I want to learn.`,
       abstractUrl: getAssetPath('/files/2024 APS-DNP CEU Abstract.pdf'),
       posterUrl: getAssetPath('/files/Daksh Bhatt APS-DNP CEU Poster Final Draft.pdf')
     },
@@ -62,20 +65,19 @@ const Outreach = () => {
       title: 'PHYS131 - Introduction to Mechanics',
       type: 'teaching',
       period: 'Sept 2024 – Dec 2024',
-      supervisor: 'Prof. Raul Hatch',
-      description: 'Assisted students during weekly lab class and office hours, guided problem-solving in mechanics, graded assignments and exams, and led review sessions to reinforce conceptual understanding.',
-      fullContent: `As a Teaching Assistant for Introduction to Mechanics, I supported first-year physics students in developing fundamental problem-solving skills and conceptual understanding of classical mechanics.
+      supervisor: 'Prof. Heath Hatch',
+      description: 'As a TA for Introduction to Mechanics, I helped first-year physics students develop problem-solving skills and build intuition for classical mechanics. Through labs, office hours, and review sessions, I supported their growth in both conceptual understanding and confidence, reinforcing my passion for teaching physics in accessible, meaningful ways.',
+      fullContent: `Physics can be intimidating at first, especially when it's taught as a wall of equations instead of a way to make sense of how the world moves. That's exactly why I loved being a Teaching Assistant for PHYS131 – Introduction to Mechanics.
 
-      Teaching Responsibilities:
-      • Conducted weekly laboratory sessions, helping students navigate experimental setups and understand the physics behind hands-on activities
-      • Held regular office hours to provide personalized support for homework problems and exam preparation
-      • Graded assignments and exams with detailed feedback to help students identify areas for improvement
-      • Led review sessions before major exams to reinforce key concepts and problem-solving strategies
+This course, taught by Prof. Heath Hatch, is often a student's first real encounter with physics, and I saw my role as being both a technical guide and a source of encouragement. I conducted weekly lab sessions, walking students through experimental setups and helping them connect hands-on measurements to Newton's laws, conservation principles, and real-world applications. In office hours, we often went beyond just solving problems. I tried to help students understand why the solution made sense, how to approach problems logically, and how to identify what physical principles were at play.
 
-      Educational Impact:
-      This role allowed me to develop strong communication skills while helping students overcome common misconceptions in introductory physics. I focused on building students' confidence in approaching physics problems systematically and understanding the underlying physical principles rather than just memorizing formulas.
+I also led review sessions before major exams. Rather than just solving a list of questions, I focused on building students' intuition, reframing problems, clarifying core ideas, and encouraging a step-by-step mindset over blind formula-chasing. These sessions often brought students together in collaborative, low-pressure environments that allowed them to ask the questions they were afraid to voice in lecture.
 
-      Many students showed marked improvement in their problem-solving abilities and expressed increased confidence in tackling physics challenges. The experience reinforced my passion for science education and outreach.`
+When grading, I put real effort into giving thoughtful feedback, pointing out not just what was incorrect but where the student's reasoning started to slip and how they could approach the problem differently. It felt less like grading and more like coaching.
+
+One of the most satisfying parts of this experience was seeing students who started the semester unsure of their abilities gradually grow in confidence and competence. Some even came back after the course ended to say they were now considering further physics classes, a message that meant the world to me.
+
+This role reaffirmed my belief that science education isn't just about conveying content, it's about empowering students to think critically, solve problems, and embrace complexity. That's what makes teaching such a powerful extension of doing science itself.`
     },
     {
       id: 'astron105-ta',
@@ -83,22 +85,18 @@ const Outreach = () => {
       type: 'teaching',
       period: 'Feb 2023 – May 2023',
       supervisor: 'Prof. Don Candela',
-      description: 'Conducted weekly office hours and graded assignments for a general education course introducing 120+ non-major students to weather phenomena through the lens of basic physics and astronomy.',
-      fullContent: `This teaching role focused on making astronomy and atmospheric physics accessible to non-science majors, helping students develop scientific literacy and appreciation for natural phenomena.
+      description: 'As a TA for "Weather and Astronomy," I helped non-science majors connect everyday weather to the physics and astronomy behind it. From explaining atmospheric phenomena in office hours to grading with clarity and fairness in mind, I worked to demystify science and encourage genuine curiosity about the natural world.',
+      fullContent: `Assisting in teaching ASTRON105 left a lasting impact on how I think about physics, astronomy, and the people we share them with.
 
-      Course Overview:
-      ASTRON105 serves as a bridge between everyday weather experiences and the underlying physics, using astronomical concepts to explain atmospheric processes. The course attracts diverse students from across the university.
+This general education course, taught by Prof. Don Candela, was designed for non-science majors, a diverse group of students from across the university, many of whom hadn't taken a physics class since high school (and some who'd sworn they never would again). The goal was to explain weather phenomena—clouds, storms, seasons, atmospheric dynamics- through the lens of basic physics and astronomy.
 
-      Teaching Contributions:
-      • Conducted weekly office hours to help students understand complex weather phenomena through simple physical principles
-      • Graded assignments with emphasis on clear explanation of concepts rather than mathematical rigor
-      • Supported students in connecting everyday weather observations to broader scientific principles
-      • Helped demystify astronomy and physics for students who might otherwise avoid science courses
+I held weekly office hours, which often became informal, one-on-one sessions about why sunsets are red, how hurricanes form, or how the tilt of the Earth affects our seasons. I learned quickly that this role wasn't about equations or advanced models. It was about telling a story students could see in their own lives; about helping them realize that science wasn't some distant concept, but something happening in the sky above them every day.
 
-      Student Engagement:
-      Working with non-major students presented unique challenges and rewards. I learned to explain complex concepts using everyday analogies and to foster curiosity about the natural world. Many students expressed surprise at how much physics could explain about their daily weather experiences.
+Grading assignments also became a form of communication. I prioritized clarity, fairness, and encouragement, especially for students who were nervous about science. My goal was always to highlight what they understood, not just what they missed.
 
-      This experience strengthened my belief in the importance of scientific literacy for all citizens, regardless of their career path.`
+What surprised me most was how many students came away from the course with a newfound appreciation for physics, not because I simplified the material, but because I helped them connect it to their everyday experiences. Seeing them light up at the realization that physics could explain the world, not just confuse them, was incredibly rewarding.
+
+This experience deepened my belief in the importance of scientific literacy, not just for scientists, but for everyone. Because when people understand the forces shaping their world, even just a little, they start to ask better questions, think more critically, and look at the sky with a bit more wonder.`
     },
     {
       id: 'astron100-ta',
@@ -106,22 +104,16 @@ const Outreach = () => {
       type: 'teaching',
       period: 'Sept 2023 – May 2025',
       supervisor: 'Prof. Stephen Schneider',
-      description: 'Assisted first-year astronomy majors during lab sessions, helping students navigate Stellarium software and apply core astronomy concepts to real sky simulations.',
-      fullContent: `As a Teaching Assistant for Exploring the Universe, I worked with first-year astronomy majors in their introduction to observational astronomy and computational tools.
+      description: 'As a Teaching Assistant for "Exploring the Universe," I\'ve helped first-year astronomy majors connect sky simulations to fundamental concepts in celestial mechanics and galactic structure. Through Stellarium-based labs, I\'ve guided students in building both technical skills and astronomical intuition, while mentoring them through their first steps in the field.',
+      fullContent: `Teaching "Exploring the Universe" has been one of the most fulfilling parts of my time at UMass, not just because I got to share what I know about astronomy, but because I got to witness something even better: curiosity taking root.
 
-      Lab Session Leadership:
-      • Guided students through Stellarium planetarium software, teaching them to navigate virtual sky observations
-      • Helped students connect theoretical concepts from lectures to practical sky observations
-      • Assisted with understanding coordinate systems, celestial motion, and astronomical timekeeping
-      • Supported students in developing observational skills and astronomical intuition
+Since Fall 2023, I've been a Teaching Assistant for ASTRON100, an introductory course for first-year astronomy majors focused on observational tools and the structure of the cosmos. My role centered around weekly lab sessions, where students used the Stellarium planetarium software to simulate real-sky observations. What began as helping them figure out keyboard shortcuts soon turned into deeper conversations about celestial motion, coordinate systems, sidereal time, and the geometry of the universe.
 
-      Skills Development:
-      The role involved teaching both technical skills (software navigation, data interpretation) and conceptual understanding (celestial mechanics, stellar properties, galactic structure). I worked to ensure students could bridge the gap between abstract concepts and observable phenomena.
+I made it a point to emphasize the connection between abstract ideas and real phenomena, like how precession affects star positions over centuries, or why the Moon doesn't eclipse the Sun every month despite its orbit. Helping students connect those dots was incredibly rewarding.
 
-      Mentorship Aspect:
-      Working with first-year astronomy majors allowed me to share insights about the major and provide guidance on academic planning. Many students were deciding whether to pursue astrophysics seriously, and I could offer perspective on the research opportunities and challenges ahead.
+Beyond the technical side of labs, I leaned into the mentorship aspect of the role. Many students were just starting, unsure whether to pursue astrophysics seriously. I made myself available to talk about course loads, summer research opportunities, and what to expect from the major. Some have gone on to explore research projects of their own, which has been especially gratifying.
 
-      This ongoing position has been particularly rewarding as I've seen students progress from basic sky navigation to sophisticated understanding of stellar evolution and galactic dynamics.`
+This position has been a continuous reminder that science isn't just about data and models, it's about people developing the confidence to ask questions, wrestle with ideas, and keep looking up. Watching students evolve from sky-gazing novices to thinkers who can explain stellar evolution and spiral arm dynamics? That's the kind of progress that makes teaching feel like its own kind of discovery.`
     }
   ];
 
@@ -140,17 +132,26 @@ const Outreach = () => {
             </p>
           </div>
 
-          {/* Instructions for adding videos */}
-          <Card className="bg-card/50 border-cosmic-purple/50 mb-8">
-            <CardContent className="p-6">
-              <h3 className="text-cosmic-bright font-semibold mb-2">Adding Presentation Videos</h3>
-              <p className="text-cosmic-star/70 text-sm">
-                To add videos: Edit the outreachData array in src/pages/Outreach.tsx. 
-                Set type: 'video', add videoUrl (YouTube embed link), and optional thumbnailUrl. 
-                Use lazy loading to keep the page lightweight.
-              </p>
-            </CardContent>
-          </Card>
+          {/* Instructions for adding videos (for developer reference only):
+          
+          To add presentation videos: Edit the outreachData array above. 
+          Set type: 'video', add videoUrl (YouTube embed link), and optional thumbnailUrl. 
+          Use lazy loading to keep the page lightweight.
+          
+          Example structure for video entries:
+          {
+            id: 'video-presentation-id',
+            title: 'Presentation Title',
+            type: 'video',
+            period: 'Date/Period',
+            venue: 'Conference/Event Name',
+            description: 'Brief description of the presentation...',
+            fullContent: 'Detailed content about the presentation...',
+            videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
+            thumbnailUrl: getAssetPath('/path/to/thumbnail.png'), // optional
+            tags: ['tag1', 'tag2']
+          }
+          */}
 
           <div className="space-y-8">
             {outreachData.map((item) => (
