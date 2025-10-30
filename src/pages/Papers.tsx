@@ -21,7 +21,7 @@ const Papers = () => {
     {
       id: 'gbo-astrometry-2025',
       title: 'Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory',
-      authors: 'Daksh Bhatt',
+      authors: 'Daksh Bhatt, Jerry Hilburn',
       venue: 'Journal of Double Star Observations (under peer review)',
       date: 'Nov 2025',
       status: 'Published',
@@ -32,24 +32,24 @@ const Papers = () => {
 
   const unpublishedPapers: Paper[] = [
     {
-      id: 'nexo-2024-paper',
-      title: 'Effect of Surface Resolution on Ray-Tracing Optical Simulations, nEXO',
-      authors: 'Daksh Bhatt',
-      venue: 'nEXO internal report / manuscript',
-      date: '2024',
-      status: 'Unpublished',
-      abstract: `Investigated the impact of surface tessellation resolution and CAD geometry variations on optical simulations using Chroma, a GPU-based ray-tracing framework. Results informed simulation practices within the PocarGroup at UMass and the nEXO collaboration.`,
-      pdfUrl: getAssetPath('/files/Pocar_Lab___Chroma___SolidWorks_Vs_Fusion_Comparison_Test.pdf')
-    },
-    {
       id: 'sfr-highz-2024',
       title: 'Star Formation Rate in the First Billion Years: Insights from High-Redshift Galaxies (6 < z < 14)',
       authors: 'Daksh Bhatt',
-      venue: 'Manuscript in preparation',
+      venue: 'Independent Research Manuscript',
       date: 'Dec 2024',
       status: 'Unpublished',
       abstract: `I investigated the star formation rate–stellar mass (SFR–M*) and specific star formation rate (sSFR–M*) relationships for massive galaxies (M* > 10¹⁰ M⊙) across 0 < z < 14 using PRIMER survey data. Galaxies at z > 6 show higher sSFRs and steeper SFR–M* slopes, indicating more efficient star formation than at lower redshifts. Increased scatter at high z suggests diverse gas accretion and star formation histories. These results highlight evolving star formation efficiency and feedback-driven quenching over cosmic time.`,
-      pdfUrl: undefined
+      pdfUrl: getAssetPath('/files/Star_Formation_Rate_in_the_First_Billion_Years__Insights_from_High_Redshift_Galaxies__6___z___14_.pdf')
+    },
+    {
+      id: 'nexo-2024-paper',
+      title: 'Effect of Surface Resolution on Ray-Tracing Optical Simulations, nEXO',
+      authors: 'Daksh Bhatt',
+      venue: 'nEXO internal report',
+      date: 'Aug 2024',
+      status: 'Unpublished',
+      abstract: `Investigated the impact of surface tessellation resolution and CAD geometry variations on optical simulations using Chroma, a GPU-based ray-tracing framework. Results informed simulation practices within the PocarGroup at UMass and the nEXO collaboration.`,
+      pdfUrl: getAssetPath('/files/Pocar_Lab___Chroma___SolidWorks_Vs_Fusion_Comparison_Test.pdf')
     }
   ];
 
@@ -99,7 +99,7 @@ const Papers = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-cosmic-bright mb-6">Unpublished / In Preparation</h2>
+            <h2 className="text-2xl font-semibold text-cosmic-bright mb-6">Unpublished</h2>
             <div className="space-y-6">
               {unpublishedPapers.map((p) => (
                 <Card key={p.id} className="bg-card border-cosmic-purple cosmic-glow">
