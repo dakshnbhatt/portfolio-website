@@ -35,7 +35,7 @@ const Research = () => {
       id: 'calzetti-group',
       title: 'Stellar Photometry and Dust Attenuation Studies',
       period: 'Feb 2025 – Present',
-      supervisor: 'Prof. Daniella Calzetti',
+      supervisor: 'Dr. Daniella Calzetti',
       institution: 'University of Massachusetts, Amherst',
       abstract: 'I\'m currently working with Prof. Daniella Calzetti to study how interstellar dust alters our view of stellar populations in the M33 galaxy. By performing automated photometry on over 1,200 clusters and analyzing color-color diagrams, I aim to quantify how dust biases age estimates and help improve how we interpret galaxies through dusty skies.',
       fullContent: `Dust isn't just a nuisance in astronomy; it's a veil, a filter, a storyteller. And the way it alters starlight has fascinated me for as long as I can remember staring at Hubble images, wondering what might lie just behind the glow.
@@ -52,10 +52,34 @@ This project has shown me how much subtlety there is in astronomical observation
       links: []
     },
     {
+      id: 'gbo-gaia-2025',
+      title: 'Astrometric Analysis and Gravitational Binding of Binary Stars Using the Great Basin Observatory and Gaia DR3',
+      period: 'Jul 2025 – Nov 2025',
+      supervisor: 'Mr. Jerry Hilburn',
+      institution: 'Great Basin Observatory',
+      abstract: `I conducted astrometric observations of the candidate binary system WDS 20528+6307 (KPP 1724) using data from the Great Basin Observatory, comparing my results with decades of archival measurements to assess its physical association. My findings—now under peer review at the Journal of Double Star Observations—confirmed consistent motion between the components, suggesting a likely common proper motion pair. To strengthen classification reliability, I later developed a Python pipeline that integrates Gaia DR3 data to probabilistically determine whether star pairs are gravitationally bound, forming the basis of a second manuscript in progress.`,
+      fullContent: `Like a pirate, I believe science—much like the open seas—should be accessible to everyone. Just because one doesn’t have a “fancy ship” doesn’t mean they shouldn’t get to sail. This philosophy, shared with Jerry Hilburn, the director of the Great Basin Observatory (GBO), shaped the spirit of my first independent research project in observational astrophysics.
+
+I joined the GBO with a simple yet ambitious question: how can we know if two stars are truly bound by gravity or just a coincidence of alignment? Traditional catalogs like the Washington Double Star Catalog (WDSC) classify pairs mostly by how close they appear in the sky—but proximity alone doesn’t guarantee a physical connection. I wanted to go deeper.
+
+Using the WDSC and Gaia DR3 databases, I identified several candidate systems for investigation and ultimately selected WDS 20528+6307 (KPP 1724) for its suitable brightness and observability from GBO. Over the next several weeks, I received ten high-quality images of the target and used AstroImageJ to perform precise astrometric reductions—measuring the system’s separation and position angles, and calculating statistical uncertainties for each observation.
+
+To put my results in context, I obtained 40 years of archival data from the United States Naval Observatory. Comparing these measurements revealed remarkably little change in separation—less than 1.1 arcseconds over four decades—while Gaia DR3 data showed strong agreement in parallax and proper motion between the two components. This suggested a likely common proper motion pair or a weakly bound binary. My findings formed the basis of my first scientific paper, currently under review in the Journal of Double Star Observations.
+
+But I didn’t stop there. The experience left me questioning the reliability of existing “binary” classifications that ignore gravitational binding. To address this, I began developing a Python-based analysis pipeline that uses Gaia DR3 astrometric and photometric data to compute the probability that two stars are gravitationally bound.
+
+The program reconstructs each system’s 3D configuration, applies energy-based criteria from classical mechanics, and uses Monte Carlo propagation to quantify uncertainties—producing a statistical confidence level for every candidate. It also estimates stellar parameters such as mass and luminosity by calibrating photometric data to solar standards, enabling a self-consistent physical assessment of each system’s gravitational stability.
+
+This project marked a turning point in my journey—from following catalog data to questioning its foundations. It taught me that progress in astrophysics often comes from looking twice at what others accept at face value. Through this work, I not only contributed to the field of double star research but also built the computational and analytical tools to make that contribution possible.`,
+      links: [
+        { label: 'Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory', url: getAssetPath('/files/Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory.pdf') }
+      ]
+    },
+    {
       id: 'nexo-experiment',
       title: 'nEXO Experiment: Neutrinoless Double Beta Decay Research',
       period: 'May 2024 – Dec 2024',
-      supervisor: 'Prof. Andrea Pocar',
+      supervisor: 'Dr. Andrea Pocar',
       institution: 'University of Massachusetts, Amherst',
       abstract: 'At UMass Amherst, I joined the nEXO collaboration to simulate how photons behave inside a 5-ton liquid xenon detector, part of the search for neutrinoless double beta decay. Using GPU-accelerated simulations, I explored how geometry and surface design affect light collection. My work helps refine detector simulation design for one of physics\'s most profound questions: why does matter exist at all?',
       fullContent: `There's something deeply humbling about working on a question that sits at the edge of what humanity knows and what we don't. That's what drew me to neutrinoless double beta decay. If this rare nuclear process exists, it could help answer one of the most profound mysteries in physics: why is our universe made of matter and not equal parts matter and antimatter?
@@ -70,14 +94,15 @@ In addition to running the simulations, I documented best practices for future r
 
 This experience stretched me technically, but more importantly, it showed me how deep attention to detail and openness to feedback can push research forward in meaningful ways. I walked away with a stronger belief in the power of simulations, not just to model the world, but to shape how we explore the universe's biggest questions.`,
       links: [
-        { label: 'APS DNP 2024 Conference Presentation', url: getAssetPath('/files/Daksh Bhatt APS-DNP CEU Poster Final Draft.pdf') }
+        { label: 'APS DNP 2024 Conference Presentation', url: getAssetPath('/files/Daksh Bhatt APS-DNP CEU Poster Final Draft.pdf') },
+        { label: 'Summary Of Work For PocarLab', url: getAssetPath('/files/Bhatt PocarLab Summary.pdf') }
       ]
     },
     {
       id: 'lux-zeplin',
       title: 'LUX-ZEPLIN Dark Matter Detection',
       period: 'Feb 2023 – May 2023',
-      supervisor: 'Prof. Scott Hertel',
+      supervisor: 'Dr. Scott Hertel',
       institution: 'University of Massachusetts, Amherst',
       abstract: 'As a freshman, I joined the Hertel Group to work on experimental hardware for dark matter detection in the LUX-ZEPLIN experiment. I designed a cryogenic mechanical switch using repurposed LEGO components—an unconventional yet effective solution for low-temperature environments. This hands-on experience sparked my passion for experimental astrophysics and showed me the power of creative problem-solving in research.',
       fullContent: `Ever since I was a kid, I've been fascinated by the unknown, especially the kind that shapes the cosmos in silence. So when I learned that dark matter might make up the vast majority of our universe and we still had no idea what it was, I knew I had to be part of the effort to find it.
@@ -92,7 +117,7 @@ Beyond my project, I contributed to the lab's broader development efforts, suppo
 
 This experience grounded my passion for experimental astrophysics and showed me what it really means to take an idea from concept to hardware, especially when the stakes involve solving one of the greatest mysteries in the universe.`,
       links: []
-    }
+    },
   ];
 
   return (
