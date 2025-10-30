@@ -1,17 +1,24 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { getAssetPath } from '@/lib/assets';
 import Link from 'next/link';
 
 const Header = () => {
-  const location = useLocation();
+  const [currentPath, setCurrentPath] = useState<string>(
+    typeof window !== 'undefined' ? window.location.pathname : '/'
+  );
+
+  useEffect(() => {
+    const onLocationChange = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', onLocationChange);
+    return () => window.removeEventListener('popstate', onLocationChange);
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Research', path: '/research' },
-    { name: 'Publications', path: '/publications' },
+    { name: 'Papers', path: '/papers' },
     { name: 'Outreach', path: '/outreach' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' },
@@ -37,7 +44,7 @@ const Header = () => {
               key={item.name}
               href={item.path}
               className={`text-sm font-medium transition-colors hover:text-cosmic-accent ${
-                location.pathname === item.path 
+                currentPath === item.path 
                   ? 'text-cosmic-accent' 
                   : 'text-cosmic-star'
               }`}
@@ -45,16 +52,12 @@ const Header = () => {
               {item.name}
             </Link>
           ))}
-          <Link href="/papers" className="text-cosmic-star hover:text-cosmic-accent">
-            Papers
-          </Link>
         </nav>
 
         {/* Right side - CV Download */}
         <Button 
           className="bg-purple-gradient hover:bg-cosmic-light text-white font-semibold px-6 py-2 cosmic-glow"
           onClick={() => {
-            // Open CV in new tab for viewing/downloading
             const cvPath = getAssetPath('/files/Daksh_Bhatt_CV.pdf');
             window.open(cvPath, '_blank');
           }}
