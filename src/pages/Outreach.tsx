@@ -146,7 +146,7 @@ This presentation became one of the most meaningful experiences of my academic j
           url: 'https://www.youtube.com/watch?v=example'
         }
       ],
-      thumbnail: getAssetPath('/lovable-uploads/AoT_BLR_sept_25.jpg') // added thumbnail
+      thumbnail: getAssetPath('/lovable-uploads/20250929_193039.jpg') // added thumbnail
     },
     {
       id: 'astronomy-on-tap-western-mass',
