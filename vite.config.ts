@@ -5,15 +5,16 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Set base path for GitHub Pages
-  base: '/',
+  base: "",
   build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    emptyOutDir: true,
     rollupOptions: {
       output: {
-        // Ensure proper MIME types for chunks
-        assetFileNames: 'assets/[name].[ext]',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: "assets/[name]-[hash][extname]",
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
       },
     },
   },
