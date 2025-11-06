@@ -22,10 +22,10 @@ const Papers = () => {
       id: 'gbo-astrometry-2025',
       title: 'Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory',
       authors: 'Daksh Bhatt, Jerry Hilburn',
-      venue: 'Journal of Double Star Observations (under peer review)',
+      venue: 'Journal of Double Star Observations',
       date: 'Nov 2025',
-      status: 'Published',
-      abstract: `WDS 20528+6307 is a two-component system observed using 10 new images and 12 historical measurements. My astrometric analysis shows less than 1.1″ change in separation over 40 years, suggesting minimal relative motion. However, the components exhibit nearly identical parallaxes and proper motions, indicating a likely common proper motion pair. Continued monitoring is required to confirm whether the system is gravitationally bound.`,
+      status: 'Under Peer Review',
+      abstract: `WDS 20528+6307 is a two-component stellar system analyzed using ten new images and twelve historical measurements spanning nearly four decades. My astrometric results reveal a modest change in separation—about 1.1″ since 1986—indicating slow relative motion between the stars. Combined with Gaia DR3 data showing nearly identical parallaxes and proper motions, this strongly suggests that the pair is physically associated rather than an optical alignment. While a definitive orbital solution remains pending, the evidence points toward a gravitationally bound system, warranting continued high-precision monitoring to constrain its orbital parameters and mass ratio.`,
       pdfUrl: getAssetPath('/files/Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory.pdf')
     }
   ];
