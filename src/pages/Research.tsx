@@ -72,7 +72,8 @@ The program reconstructs each system’s 3D spatial configuration, applies energ
 
 This project marked a pivotal moment in my growth as a researcher: a shift from following data to questioning its assumptions. It taught me that progress in astrophysics often comes not from discovering something entirely new, but from looking twice at what others take for granted. Through this work, I not only contributed new observations to the field of double star research but also built the computational and analytical tools to push it further.`,
       links: [
-        { label: 'Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory', url: getAssetPath('/files/Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory.pdf') }
+        { label: 'Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory', url: getAssetPath('/files/Astrometric Observations of WDS 20528+6307 Using the Great Basin Observatory.pdf') },
+        { label: 'Pre-Print Version', url: 'https://science.greatbasinobservatory.org/pre-print-submissions' }
       ]
     },
     {

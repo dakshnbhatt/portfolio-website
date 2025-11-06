@@ -173,11 +173,11 @@ const Index = () => {
                 <TableBody>
                   <TableRow className="border-cosmic-purple hover:bg-cosmic-purple/20">
                     <TableCell className="text-cosmic-star font-medium w-32 whitespace-nowrap">Jul 2025</TableCell>
-                    <TableCell className="text-cosmic-star">Started research with The Great Basin Observatory on binary star detection (Paper Soon)</TableCell>
+                    <TableCell className="text-cosmic-star">Started research with The Great Basin Observatory on binary star detection (Paper Out Now!)</TableCell>
                   </TableRow>
                   <TableRow className="border-cosmic-purple hover:bg-cosmic-purple/20">
                     <TableCell className="text-cosmic-star font-medium w-32 whitespace-nowrap">Dec 2024</TableCell>
-                    <TableCell className="text-cosmic-star">Started research collaboration with Prof. Daniella Calzetti on stellar photometry and dust attenuation studies (Paper Soon)</TableCell>
+                    <TableCell className="text-cosmic-star">Started research collaboration with Prof. Daniella Calzetti on stellar photometry and dust attenuation studies (Paper Spring'26)</TableCell>
                   </TableRow>
                   <TableRow className="border-cosmic-purple hover:bg-cosmic-purple/20">
                     <TableCell className="text-cosmic-star font-medium w-32 whitespace-nowrap">Oct 2024</TableCell>
